@@ -1,0 +1,33 @@
+:root{
+  --bg:#0b0c10;
+  --fg:#e8e8ea;
+  --muted:#a6a6ad;
+  --card:#14151b;
+  --link:#8bd5ff;
+  --border:#262833;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--fg);
+  font:16px/1.7 ui-sans-serif, system-ui, -apple-system, "SF Pro Text", "PingFang SC", "Noto Sans CJK SC", "Hiragino Sans", "Microsoft Yahei", sans-serif;
+}
+.wrap{max-width:820px;margin:0 auto;padding:24px}
+.site-header{border-bottom:1px solid var(--border);background:rgba(20,21,27,.6);backdrop-filter: blur(8px);position:sticky;top:0}
+.site-header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 24px}
+.brand{color:var(--fg);text-decoration:none;font-weight:700;letter-spacing:.4px}
+.nav a{color:var(--muted);text-decoration:none;margin-left:14px}
+.nav a:hover{color:var(--fg)}
+.entry{padding:22px 0}
+.meta{color:var(--muted);font-size:14px}
+.prose a{color:var(--link)}
+.prose p{margin:0 0 14px}
+.entry-list{list-style:none;padding:0;margin:0}
+.entry-list li{padding:10px 0;border-bottom:1px solid var(--border)}
+.entry-list a{color:var(--fg);text-decoration:none}
+.entry-list a:hover{text-decoration:underline}
+.muted{color:var(--muted)}
+.tags{margin-top:18px}
+.tag{display:inline-block;margin-left:8px;padding:2px 8px;border:1px solid var(--border);border-radius:999px;color:var(--muted);font-size:12px}
+.site-footer{border-top:1px solid var(--border);margin-top:36px}

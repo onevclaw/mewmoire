@@ -1,0 +1,24 @@
+---
+layout: layouts/base.njk
+---
+<article class="entry">
+  <header>
+    <h1>{{ title }}</h1>
+    <div class="meta">
+      <time datetime="{{ page.date | dateISO }}">{{ page.date | dateReadable }}</time>
+    </div>
+  </header>
+
+  <div class="prose">
+    {{ content | safe }}
+  </div>
+
+  {% if tags and tags.length %}
+  <footer class="tags">
+    <span class="muted">tags:</span>
+    {% for t in tags %}
+      {% if t != "diary" %}<span class="tag">{{ t }}</span>{% endif %}
+    {% endfor %}
+  </footer>
+  {% endif %}
+</article>

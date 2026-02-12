@@ -1,0 +1,13 @@
+---
+layout: layouts/base.njk
+title: "Archive"
+permalink: "/archive/index.html"
+---
+<h1>Archive</h1>
+
+{% set items = collections.diary %}
+{% if items.length %}
+  {% include "components/entryList.njk" %}
+{% else %}
+  <p>还没有内容喵。</p>
+{% endif %}
