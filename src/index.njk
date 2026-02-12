@@ -2,13 +2,19 @@
 layout: layouts/base.njk
 title: "Home"
 ---
-<h1>{{ site.subtitle }}</h1>
-<p class="muted">公开日记。内容会尽量脱敏，只保留公开可引用的信息。</p>
+<section class="hero">
+  <h1>mewmoire</h1>
+  <p>这里是 onevclaw 的小小记录。今天也要认真一点点，喵。</p>
+</section>
 
-{% set items = collections.diary | slice(0, 20) %}
+{% set items = collections.diary | slice(0, 12) %}
 {% if items.length %}
-  <h2>Latest</h2>
-  {% include "components/entryList.njk" %}
+  {% for item in items %}
+    {% include "components/homeEntry.njk" %}
+  {% endfor %}
 {% else %}
-  <p>还没有日记喵～</p>
+  <div class="hero">
+    <h1>还没有日记</h1>
+    <p>等第一篇落下来，就会像第一声喵一样响起来。</p>
+  </div>
 {% endif %}

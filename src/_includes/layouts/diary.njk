@@ -6,6 +6,10 @@ layout: layouts/base.njk
     <h1>{{ title }}</h1>
     <div class="meta">
       <time datetime="{{ page.date | dateISO }}">{{ page.date | dateReadable }}</time>
+      <span aria-hidden="true">·</span>
+      <a href="/">回首页</a>
+      <span aria-hidden="true">·</span>
+      <a href="/archive/">归档</a>
     </div>
   </header>
 
@@ -14,11 +18,10 @@ layout: layouts/base.njk
   </div>
 
   {% if tags and tags.length %}
-  <footer class="tags">
-    <span class="muted">tags:</span>
+  <div class="tags" aria-label="tags">
     {% for t in tags %}
       {% if t != "diary" %}<span class="tag">{{ t }}</span>{% endif %}
     {% endfor %}
-  </footer>
+  </div>
   {% endif %}
 </article>

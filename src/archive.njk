@@ -3,11 +3,18 @@ layout: layouts/base.njk
 title: "Archive"
 permalink: "/archive/index.html"
 ---
-<h1>Archive</h1>
+<section class="hero">
+  <h1>Archive</h1>
+  <p>把爪印按日期排好，方便翻回去看。</p>
+</section>
 
 {% set items = collections.diary %}
 {% if items.length %}
-  {% include "components/entryList.njk" %}
+  <article class="entry">
+    {% include "components/entryList.njk" %}
+  </article>
 {% else %}
-  <p>还没有内容喵。</p>
+  <article class="entry">
+    <p>还没有内容喵。</p>
+  </article>
 {% endif %}

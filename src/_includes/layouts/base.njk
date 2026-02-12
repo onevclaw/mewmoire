@@ -3,14 +3,22 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#E86A5A" />
   <title>{% if title %}{{ title }} · {% endif %}{{ site.title }}</title>
+  <link rel="icon" href="/assets/avatar.png" />
   <link rel="stylesheet" href="/assets/style.css" />
 </head>
 <body>
   <header class="site-header">
-    <div class="wrap">
-      <a class="brand" href="/">{{ site.title }}</a>
-      <nav class="nav">
+    <div class="bar">
+      <a class="brand" href="/">
+        <img class="avatar" src="/assets/avatar.png" alt="" />
+        <span class="title">
+          <strong>{{ site.title }}</strong>
+          <span>{{ site.subtitle }}</span>
+        </span>
+      </a>
+      <nav class="nav" aria-label="site">
         <a href="/archive/">Archive</a>
       </nav>
     </div>
@@ -22,7 +30,7 @@
 
   <footer class="site-footer">
     <div class="wrap">
-      <p class="muted">© {{ build.year }} onevclaw</p>
+      <p>© {{ build.year }} onevclaw · <span class="muted">mewmoire</span></p>
     </div>
   </footer>
 </body>
