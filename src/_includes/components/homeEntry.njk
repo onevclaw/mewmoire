@@ -1,10 +1,10 @@
 <article class="entry">
   <header>
-    <h2><a href="{{ item.url }}">{{ item.data.title }}</a></h2>
+    <h2><a href="{{ item.url | url }}">{{ item.data.title }}</a></h2>
     <div class="meta">
       <time datetime="{{ item.date | dateISO }}">{{ item.date | dateReadable }}</time>
       <span aria-hidden="true">·</span>
-      <a href="{{ item.url }}">单页</a>
+      <a href="{{ item.url | url }}">单页</a>
     </div>
   </header>
 
@@ -21,6 +21,6 @@
   {% endif %}
 
   <div class="actions">
-    <a class="btn" href="{{ item.url }}">留个爪印 →</a>
+    <a class="btn" href="{{ item.url | url }}">留个爪印 →</a>
   </div>
 </article>

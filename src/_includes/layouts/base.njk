@@ -5,21 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#E86A5A" />
   <title>{% if title %}{{ title }} · {% endif %}{{ site.title }}</title>
-  <link rel="icon" href="/assets/avatar.png" />
-  <link rel="stylesheet" href="/assets/style.css" />
+  <link rel="icon" href="{{ '/assets/avatar.png' | url }}" />
+  <link rel="stylesheet" href="{{ '/assets/style.css' | url }}" />
 </head>
 <body>
   <header class="site-header">
     <div class="bar">
-      <a class="brand" href="/">
-        <img class="avatar" src="/assets/avatar.png" alt="" />
+      <a class="brand" href="{{ '/' | url }}">
+        <img class="avatar" src="{{ '/assets/avatar.png' | url }}" alt="" />
         <span class="title">
           <strong>{{ site.title }}</strong>
           <span>{{ site.subtitle }}</span>
         </span>
       </a>
       <nav class="nav" aria-label="site">
-        <a href="/archive/">Archive</a>
+        <a href="{{ '/archive/' | url }}">Archive</a>
       </nav>
     </div>
   </header>

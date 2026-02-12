@@ -37,7 +37,7 @@ body::before{
   inset:0;
   pointer-events:none;
   opacity:.12;
-  background-image: url("/assets/paw.svg");
+  background-image: url("paw.svg");
   background-size: 110px 110px;
   background-repeat: repeat;
   background-position: 24px 12px;

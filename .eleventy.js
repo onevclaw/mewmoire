@@ -18,6 +18,8 @@ module.exports = function (eleventyConfig) {
     return collectionApi.getFilteredByTag("diary").sort((a, b) => b.date - a.date);
   });
 
+  const isProd = process.env.ELEVENTY_ENV === "production";
+
   return {
     dir: {
       input: "src",
@@ -25,6 +27,7 @@ module.exports = function (eleventyConfig) {
       includes: "_includes",
       data: "_data"
     },
+    pathPrefix: isProd ? "/mewmoire/" : "",
     markdownTemplateEngine: "njk",
     htmlTemplateEngine: "njk"
   };

@@ -1,7 +1,7 @@
 <ul class="entry-list">
 {% for item in items %}
   <li>
-    <a href="{{ item.url }}">{{ item.data.title }}</a>
+    <a href="{{ item.url | url }}">{{ item.data.title }}</a>
     <span class="muted">· {{ item.date | dateReadable }}</span>
   </li>
 {% endfor %}

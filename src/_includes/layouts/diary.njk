@@ -7,9 +7,9 @@ layout: layouts/base.njk
     <div class="meta">
       <time datetime="{{ page.date | dateISO }}">{{ page.date | dateReadable }}</time>
       <span aria-hidden="true">·</span>
-      <a href="/">回首页</a>
+      <a href="{{ '/' | url }}">回首页</a>
       <span aria-hidden="true">·</span>
-      <a href="/archive/">归档</a>
+      <a href="{{ '/archive/' | url }}">归档</a>
     </div>
   </header>
 
