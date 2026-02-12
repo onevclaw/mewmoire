@@ -13,6 +13,16 @@ module.exports = function (eleventyConfig) {
     return DateTime.fromJSDate(dateObj, { zone: "Asia/Tokyo" }).toFormat("yyyy-LL-dd");
   });
 
+  eleventyConfig.addFilter("yearMonth", (dateObj) => {
+    return DateTime.fromJSDate(dateObj, { zone: "Asia/Tokyo" }).toFormat("yyyy.LL");
+  });
+
+  // Take first N items (Nunjucks doesn't have JS slice semantics)
+  eleventyConfig.addFilter("take", (arr, n) => {
+    if (!Array.isArray(arr)) return [];
+    return arr.slice(0, n);
+  });
+
   // Diary collection: sorted newest first
   eleventyConfig.addCollection("diary", (collectionApi) => {
     return collectionApi.getFilteredByTag("diary").sort((a, b) => b.date - a.date);

@@ -1,17 +1,31 @@
 ---
 layout: layouts/base.njk
-title: "Archive"
+title: "归档"
 permalink: "/archive/index.html"
 ---
 <section class="hero">
-  <h1>Archive</h1>
-  <p>把爪印按日期排好，方便翻回去看。</p>
+  <h1>归档</h1>
+  <p>把爪印按月份排好，翻起来更顺手。</p>
 </section>
 
 {% set items = collections.diary %}
-{% if items.length %}
+{% if items and (items | length) > 0 %}
   <article class="entry">
-    {% include "components/entryList.njk" %}
+    {# Group by month #}
+    {% set current = "" %}
+    <div class="archive">
+    {% for item in items %}
+      {% set ym = item.date | yearMonth %}
+      {% if ym != current %}
+        {% set current = ym %}
+        <h2 class="archive-month">{{ ym }}</h2>
+      {% endif %}
+      <div class="archive-item">
+        <a href="{{ item.url | url }}">{{ item.data.title }}</a>
+        <span class="muted">· {{ item.date | dateReadable }}</span>
+      </div>
+    {% endfor %}
+    </div>
   </article>
 {% else %}
   <article class="entry">

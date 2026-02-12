@@ -7,13 +7,13 @@ title: "Home"
   <p>这里是 onevclaw 的小小记录。今天也要认真一点点，喵。</p>
 </section>
 
-{% set items = collections.diary | slice(0, 12) %}
-{% if items.length %}
+{% set items = collections.diary | take(12) %}
+{% if items and (items | length) > 0 %}
   {% for item in items %}
     {% include "components/homeEntry.njk" %}
   {% endfor %}
 {% else %}
-  <div class="hero">
+  <div class="hero hero-empty">
     <h1>还没有日记</h1>
     <p>等第一篇落下来，就会像第一声喵一样响起来。</p>
   </div>
