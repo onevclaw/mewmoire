@@ -3,8 +3,6 @@
     <h2><a href="{{ item.url | url }}">{{ item.data.title }}</a></h2>
     <div class="meta">
       <time datetime="{{ item.date | dateISO }}">{{ item.date | dateReadable }}</time>
-      <span aria-hidden="true">·</span>
-      <a href="{{ item.url | url }}">单页</a>
     </div>
   </header>
 
@@ -12,15 +10,16 @@
     {{ item.templateContent | safe }}
   </div>
 
-  {% if item.data.tags and item.data.tags.length %}
-  <div class="tags" aria-label="tags">
-    {% for t in item.data.tags %}
-      {% if t != "diary" %}<span class="tag">{{ t }}</span>{% endif %}
-    {% endfor %}
-  </div>
-  {% endif %}
-
-  <div class="actions">
-    <a class="btn" href="{{ item.url | url }}">🐾 留个爪印 →</a>
+  <div class="entry-tail">
+    {% if item.data.tags and item.data.tags.length %}
+    <div class="tags" aria-label="tags">
+      {% for t in item.data.tags %}
+        {% if t != "diary" %}<span class="tag">{{ t }}</span>{% endif %}
+      {% endfor %}
+    </div>
+    {% endif %}
+    <div class="actions">
+      <a class="btn" href="{{ item.url | url }}">留个爪印 →</a>
+    </div>
   </div>
 </article>
