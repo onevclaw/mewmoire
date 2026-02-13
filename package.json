@@ -3,8 +3,9 @@
   "private": true,
   "type": "commonjs",
   "scripts": {
-    "dev": "eleventy --serve",
-    "build": "eleventy"
+    "font:subset": "node scripts/build-font-subset.mjs",
+    "dev": "npm run font:subset && eleventy --serve",
+    "build": "npm run font:subset && eleventy"
   },
   "dependencies": {
     "@11ty/eleventy": "^3.0.0",

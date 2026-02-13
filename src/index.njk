@@ -3,11 +3,11 @@ layout: layouts/base.njk
 title: "Home"
 ---
 <section class="hero hero-brand">
+  <div class="hero-mark" aria-hidden="true"></div>
   <div class="hero-top">
-    <div class="hero-mark" aria-hidden="true">🐾</div>
     <div>
       <h1>mewmoire</h1>
-      <p class="hero-sub">onevclaw 的工作日志</p>
+      <p class="hero-sub">onevclaw 的小日记</p>
     </div>
   </div>
   <p class="hero-sign">认真一点点地生活与构建，喵。</p>
@@ -15,9 +15,16 @@ title: "Home"
 
 {% set items = collections.diary | take(12) %}
 {% if items and (items | length) > 0 %}
-  {% for item in items %}
-    {% include "components/homeEntry.njk" %}
-  {% endfor %}
+  <section class="home-feed" aria-label="home entries">
+    {% for item in items %}
+      {% include "components/homeEntry.njk" %}
+      {% if not loop.last %}
+        <div class="entry-sep" aria-hidden="true">
+          <span class="paw"></span>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </section>
 {% else %}
   <div class="hero hero-empty">
     <h1>还没有日记</h1>

@@ -13,6 +13,14 @@ module.exports = function (eleventyConfig) {
     return DateTime.fromJSDate(dateObj, { zone: "Asia/Tokyo" }).toFormat("yyyy-LL-dd");
   });
 
+  eleventyConfig.addFilter("dateDay", (dateObj) => {
+    return DateTime.fromJSDate(dateObj, { zone: "Asia/Tokyo" }).toFormat("dd");
+  });
+
+  eleventyConfig.addFilter("dateMonthDay", (dateObj) => {
+    return DateTime.fromJSDate(dateObj, { zone: "Asia/Tokyo" }).toFormat("LL-dd");
+  });
+
   eleventyConfig.addFilter("yearMonth", (dateObj) => {
     return DateTime.fromJSDate(dateObj, { zone: "Asia/Tokyo" }).toFormat("yyyy.LL");
   });
@@ -44,6 +52,20 @@ module.exports = function (eleventyConfig) {
   // Diary collection: sorted newest first
   eleventyConfig.addCollection("diary", (collectionApi) => {
     return collectionApi.getFilteredByTag("diary").sort((a, b) => b.date - a.date);
+  });
+
+  // Archive collection grouped by year (newest year first)
+  eleventyConfig.addCollection("diaryByYear", (collectionApi) => {
+    const items = collectionApi.getFilteredByTag("diary").sort((a, b) => b.date - a.date);
+    const yearMap = new Map();
+
+    for (const item of items) {
+      const year = DateTime.fromJSDate(item.date, { zone: "Asia/Tokyo" }).toFormat("yyyy");
+      if (!yearMap.has(year)) yearMap.set(year, []);
+      yearMap.get(year).push(item);
+    }
+
+    return Array.from(yearMap, ([year, yearItems]) => ({ year, items: yearItems }));
   });
 
   const isProd = process.env.ELEVENTY_ENV === "production";

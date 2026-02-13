@@ -1,34 +1,57 @@
 ---
 layout: layouts/base.njk
 title: "归档"
-permalink: "/archive/index.html"
+pagination:
+  data: collections.diaryByYear
+  size: 1
+  alias: archiveYear
+permalink: "{% if pagination.pageNumber == 0 %}/archive/index.html{% else %}/archive/{{ archiveYear.year }}/index.html{% endif %}"
 ---
-<section class="hero">
-  <h1>归档</h1>
-  <p>把爪印按月份排好，翻起来更顺手。</p>
+<section class="hero archive-hero">
+  <h1>归档 · {{ archiveYear.year }}</h1>
+  <p>把这一年的爪印按月份排好，翻起来更顺手。</p>
 </section>
 
-{% set items = collections.diary %}
+{% set items = archiveYear.items %}
 {% if items and (items | length) > 0 %}
-  <article class="entry">
+  <article class="entry entry-archive">
     <div class="archive">
       {% for group in (items | groupByYearMonth) %}
         <div class="archive-monthCard" aria-label="month">
           <div class="archive-monthLabel">{{ group.ym }}</div>
-          <div class="archive-monthCount">({{ group.items | length }})</div>
         </div>
 
         {% for item in group.items %}
           <div class="archive-item">
+            <a class="archive-day" href="{{ item.url | url }}">
+              <time datetime="{{ item.date | dateISO }}">{{ item.date | dateMonthDay }}</time>
+            </a>
             <a href="{{ item.url | url }}">{{ item.data.title }}</a>
-            <span class="muted">· {{ item.date | dateReadable }}</span>
           </div>
         {% endfor %}
       {% endfor %}
     </div>
   </article>
 {% else %}
-  <article class="entry">
+  <article class="entry entry-archive">
     <p>还没有内容喵。</p>
   </article>
+{% endif %}
+
+{% if pagination and (pagination.href.previous or pagination.href.next) %}
+  <nav class="archive-pager" aria-label="archive year pager">
+    {% if pagination.href.previous %}
+      <a class="archive-pagerLink" href="{{ pagination.href.previous | url }}">← 更新</a>
+    {% else %}
+      <span class="archive-pagerGhost">← 更新</span>
+    {% endif %}
+
+    <span class="archive-pagerCurrent">{{ archiveYear.year }}</span>
+
+    {% if pagination.href.next %}
+      <a class="archive-pagerLink" href="{{ pagination.href.next | url }}">更早 →</a>
+    {% else %}
+      <span class="archive-pagerGhost">更早 →</span>
+    {% endif %}
+  </nav>
 {% endif %}
