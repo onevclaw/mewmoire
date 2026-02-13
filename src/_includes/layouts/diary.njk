@@ -1,15 +1,11 @@
 ---
 layout: layouts/base.njk
 ---
-<article class="entry">
+<article class="entry entry-detail">
   <header>
     <h1>{{ title }}</h1>
     <div class="meta">
       <time datetime="{{ page.date | dateISO }}">{{ page.date | dateReadable }}</time>
-      <span aria-hidden="true">·</span>
-      <a href="{{ '/' | url }}">回首页</a>
-      <span aria-hidden="true">·</span>
-      <a href="{{ '/archive/' | url }}">归档</a>
     </div>
   </header>
 
