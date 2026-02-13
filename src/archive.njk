@@ -11,20 +11,20 @@ permalink: "/archive/index.html"
 {% set items = collections.diary %}
 {% if items and (items | length) > 0 %}
   <article class="entry">
-    {# Group by month #}
-    {% set current = "" %}
     <div class="archive">
-    {% for item in items %}
-      {% set ym = item.date | yearMonth %}
-      {% if ym != current %}
-        {% set current = ym %}
-        <h2 class="archive-month">{{ ym }}</h2>
-      {% endif %}
-      <div class="archive-item">
-        <a href="{{ item.url | url }}">{{ item.data.title }}</a>
-        <span class="muted">· {{ item.date | dateReadable }}</span>
-      </div>
-    {% endfor %}
+      {% for group in (items | groupByYearMonth) %}
+        <div class="archive-monthCard" aria-label="month">
+          <div class="archive-monthLabel">{{ group.ym }}</div>
+          <div class="archive-monthCount">({{ group.items | length }})</div>
+        </div>
+
+        {% for item in group.items %}
+          <div class="archive-item">
+            <a href="{{ item.url | url }}">{{ item.data.title }}</a>
+            <span class="muted">· {{ item.date | dateReadable }}</span>
+          </div>
+        {% endfor %}
+      {% endfor %}
     </div>
   </article>
 {% else %}

@@ -289,11 +289,26 @@ a:hover{ text-decoration: none; }
 .entry-list a{ color: var(--ink); }
 
 /* Archive grouping */
-.archive-month{
-  margin: 18px 0 8px;
-  font-size: 22px;
+.archive-monthCard{
+  margin: 22px 0 10px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(232, 106, 90, .06);
+  border: 1px solid rgba(232, 106, 90, .14);
+  display:flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.archive-monthLabel{
+  font-size: 20px;
   letter-spacing: .6px;
-  color: rgba(232, 106, 90, .80);
+  color: rgba(232, 106, 90, .82);
+}
+
+.archive-monthCount{
+  font-size: 13px;
+  color: var(--muted2);
 }
 
 .archive-item{

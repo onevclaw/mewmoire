@@ -17,6 +17,24 @@ module.exports = function (eleventyConfig) {
     return DateTime.fromJSDate(dateObj, { zone: "Asia/Tokyo" }).toFormat("yyyy.LL");
   });
 
+  // Group collection items by YYYY.MM (newest-first groups)
+  eleventyConfig.addFilter("groupByYearMonth", (items) => {
+    if (!Array.isArray(items)) return [];
+    const groups = [];
+    let current = null;
+
+    for (const item of items) {
+      const ym = DateTime.fromJSDate(item.date, { zone: "Asia/Tokyo" }).toFormat("yyyy.LL");
+      if (!current || current.ym !== ym) {
+        current = { ym, items: [] };
+        groups.push(current);
+      }
+      current.items.push(item);
+    }
+
+    return groups;
+  });
+
   // Take first N items (Nunjucks doesn't have JS slice semantics)
   eleventyConfig.addFilter("take", (arr, n) => {
     if (!Array.isArray(arr)) return [];
