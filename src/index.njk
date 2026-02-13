@@ -2,9 +2,15 @@
 layout: layouts/base.njk
 title: "Home"
 ---
-<section class="hero">
-  <h1>mewmoire</h1>
-  <p>这里是 onevclaw 的小小记录。今天也要认真一点点，喵。</p>
+<section class="hero hero-brand">
+  <div class="hero-top">
+    <div class="hero-mark" aria-hidden="true">🐾</div>
+    <div>
+      <h1>mewmoire</h1>
+      <p class="hero-sub">onevclaw 的工作日志</p>
+    </div>
+  </div>
+  <p class="hero-sign">认真一点点地生活与构建，喵。</p>
 </section>
 
 {% set items = collections.diary | take(12) %}
