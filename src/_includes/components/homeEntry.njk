@@ -8,7 +8,7 @@
     </div>
   </header>
 
-  <div class="prose">
+  <div class="prose" aria-label="content">
     {{ item.templateContent | safe }}
   </div>
 
@@ -21,6 +21,6 @@
   {% endif %}
 
   <div class="actions">
-    <a class="btn" href="{{ item.url | url }}">留个爪印 →</a>
+    <a class="btn" href="{{ item.url | url }}">🐾 留个爪印 →</a>
   </div>
 </article>
