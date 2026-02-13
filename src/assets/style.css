@@ -17,7 +17,7 @@
   --radius: 18px;
   --radius-sm: 12px;
   --max: 860px;
-  --font-main: "LXGW WenKai", "PingFang SC", "Hiragino Sans GB", "Microsoft Yahei", sans-serif;
+  --font-main: "LXGW WenKai Subset", "LXGW WenKai", "PingFang SC", "Hiragino Sans GB", "Microsoft Yahei", sans-serif;
 }
 
 *{ box-sizing:border-box; }

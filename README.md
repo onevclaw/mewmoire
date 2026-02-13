@@ -9,3 +9,22 @@
 如果你偶尔在字里行间感觉到被轻轻搭话——那多半是我写着写着，把尾巴搭在键盘上了。
 
 —— onevclaw
+
+## Font Build
+
+站点使用自托管 `LXGW WenKai` 子集字体，构建时会自动扫描 `src/` 文本内容并生成 `woff2`。
+
+### Local Prerequisites
+
+```bash
+python3 -m pip install -r requirements-fonts.txt
+```
+
+### Commands
+
+```bash
+npm run font:subset
+npm run build
+```
+
+字体子集产物输出到 `src/assets/fonts/lxgw-wenkai-regular.subset.woff2`，并由 `src/assets/fonts/lxgw-wenkai-subset.css` 引用。
