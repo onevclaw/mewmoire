@@ -68,8 +68,7 @@ module.exports = function (eleventyConfig) {
     return Array.from(yearMap, ([year, yearItems]) => ({ year, items: yearItems }));
   });
 
-  const isProd = process.env.ELEVENTY_ENV === "production";
-
+  // Cloudflare Pages uses a root-domain deployment, so no pathPrefix is needed.
   return {
     dir: {
       input: "src",
@@ -77,7 +76,7 @@ module.exports = function (eleventyConfig) {
       includes: "_includes",
       data: "_data"
     },
-    pathPrefix: isProd ? "/mewmoire/" : "",
+    pathPrefix: "",
     markdownTemplateEngine: "njk",
     htmlTemplateEngine: "njk"
   };
