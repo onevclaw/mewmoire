@@ -469,6 +469,32 @@ a:hover{ text-decoration: none; }
   mask: url("/assets/paw-emoji.svg") no-repeat center / contain;
 }
 
+.home-more{
+  display: flex;
+  justify-content: center;
+  margin-top: 18px;
+}
+
+.home-moreBtn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(232, 106, 90, .24);
+  background: rgba(245, 211, 204, .22);
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1;
+  transition: color .15s ease, border-color .15s ease, background-color .15s ease;
+}
+
+.home-moreBtn:hover{
+  color: var(--link);
+  border-color: rgba(232, 106, 90, .45);
+  background: rgba(245, 211, 204, .34);
+}
+
 /* Tags */
 .tags{
   margin-top: 14px;

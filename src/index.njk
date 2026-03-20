@@ -14,6 +14,7 @@ title: "Home"
 </section>
 
 {% set items = collections.diary | take(12) %}
+{% set hasMore = collections.diary and (collections.diary | length) > (items | length) %}
 {% if items and (items | length) > 0 %}
   <section class="home-feed" aria-label="home entries">
     {% for item in items %}
@@ -24,6 +25,12 @@ title: "Home"
         </div>
       {% endif %}
     {% endfor %}
+
+    {% if hasMore %}
+      <div class="home-more">
+        <a class="home-moreBtn" href="{{ '/archive/' | url }}">更多日记</a>
+      </div>
+    {% endif %}
   </section>
 {% else %}
   <div class="hero hero-empty">
